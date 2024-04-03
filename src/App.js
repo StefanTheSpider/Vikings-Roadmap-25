@@ -1,22 +1,22 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const messages = [
     'Do a good job in a Free Agency 💪',
     'do nice on the Draft 🤝',
     'Winn the Super Bowl 🏆',
-]
+];
 
 export default function App() {
-    const [step, setStep] = useState(1)
-    const [openClose, setOpenClose] = useState(true)
+    const [step, setStep] = useState(1);
+    const [openClose, setOpenClose] = useState(true);
     function handlePrevious() {
         if (step > 1) {
-            setStep((step) => step - 1)
+            setStep((step) => step - 1);
         }
     }
     function handleNext() {
         if (step < 3) {
-            setStep((step) => step + 1)
+            setStep((step) => step + 1);
         }
     }
 
@@ -39,27 +39,36 @@ export default function App() {
                         Step {step}: {messages[step - 1]}
                     </p>
                     <div className="buttons">
-                        <button
-                            style={{
-                                backgroundColor: `#ffc62f`,
-                                color: `#fff`,
-                            }}
+                        <Button
+                            textColor="fff"
+                            bgColor="#ffc62f"
                             onClick={handlePrevious}
                         >
-                            Previous
-                        </button>
-                        <button
-                            style={{
-                                backgroundColor: `#ffc62f`,
-                                color: `#fff`,
-                            }}
+                            🫲🏻 Previus
+                        </Button>
+                        <Button
+                            textColor="fff"
+                            bgColor="#ffc62f"
                             onClick={handleNext}
                         >
-                            Next
-                        </button>
+                            Next 🫱🏻
+                        </Button>
                     </div>
                 </div>
             )}
         </>
-    )
+    );
+}
+
+function Button({ textColor, bgColor, onClick, children }) {
+    return (
+        <>
+            <button
+                style={{ color: textColor, backgroundColor: bgColor }}
+                onClick={onClick}
+            >
+                {children}
+            </button>
+        </>
+    );
 }
